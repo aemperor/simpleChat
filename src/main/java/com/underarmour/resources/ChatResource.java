@@ -1,5 +1,6 @@
 package com.underarmour.resources;
 
+import com.underarmour.db.ChatDAO;
 import com.underarmour.model.Chat;
 
 import javax.ws.rs.GET;
@@ -14,6 +15,12 @@ import javax.ws.rs.core.MediaType;
 */
 @Path("/chat")
 public class ChatResource {
+	private final ChatDAO chatDAO;
+
+	public ChatResource(ChatDAO chatDAO) {
+		this.chatDAO = chatDAO;
+	}
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String create(Chat chat) {
@@ -22,7 +29,7 @@ public class ChatResource {
 
 	@GET
 	@Path("{id}")
-	public String get(@PathParam("id") int id) {
+	public String get(@PathParam("id") long id) {
 		return "001";
 	}
 

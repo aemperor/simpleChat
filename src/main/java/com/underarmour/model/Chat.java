@@ -1,10 +1,15 @@
 package com.underarmour.model;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
 * Data Transfer Object representing chat
 */
-
+@Table(name="chat")
 public class Chat {
-	private int _id;
+	@Id
+	private long _id;
 	private String _user;
 	private String _text;
 	private int _timeout = 60000;
@@ -24,6 +29,6 @@ public class Chat {
 	public void setText(String text) { this._text = text; }
 	public int getTimeout() { return this._timeout; }
 	public void setTimeout(int timeout) { this._timeout = timeout; }
-	public int getId() { return this._id; }
-	public void setId(int id) { this._id = id; }
+	public long getId() { return this._id; }
+	public void setId(long id) { this._id = id; }
 }
