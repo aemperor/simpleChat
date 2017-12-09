@@ -14,7 +14,7 @@ database:
   password: iAMs00perSecrEET
 
   # the JDBC URL
-  url: jdbc:postgresql://db.example.com/db-prod
+  url: jdbc:postgresql://db.underarmour.com/db-prod
 
   # any properties specific to your JDBC driver:
   properties:

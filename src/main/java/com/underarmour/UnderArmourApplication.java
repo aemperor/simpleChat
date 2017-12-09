@@ -1,28 +1,19 @@
 package com.underarmour;
 
 import com.underarmour.db.ChatDAO;
-import com.underarmour.model.Chat;
 import com.underarmour.resources.ChatResource;
 
 import io.dropwizard.Application;
-import io.dropwizard.db.DataSourceFactory;
-import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.skife.jdbi.v2.DBI;
 
 public class UnderArmourApplication extends Application<UnderArmourConfiguration> {
 
     public static void main(final String[] args) throws Exception {
         new UnderArmourApplication().run(args);
     }
-
-    private final HibernateBundle<UnderArmourConfiguration> hibernateBundle =
-            new HibernateBundle<UnderArmourConfiguration>(Chat.class) {
-                @Override
-                public DataSourceFactory getDataSourceFactory(UnderArmourConfiguration configuration) {
-                    return configuration.getDataSourceFactory();
-                }
-            };
 
     @Override
     public String getName() {
@@ -37,7 +28,9 @@ public class UnderArmourApplication extends Application<UnderArmourConfiguration
     @Override
     public void run(final UnderArmourConfiguration configuration,
                     final Environment environment) {
-        final ChatDAO chatDAO = new ChatDAO(hibernateBundle.getSessionFactory());
+        final DBIFactory factory = new DBIFactory();
+        final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
+        final ChatDAO chatDAO = jdbi.onDemand(ChatDAO.class);
 
         final ChatResource resource = new ChatResource(chatDAO);
         environment.jersey().register(resource);

@@ -1,14 +1,9 @@
 package com.underarmour.model;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 /**
 * Data Transfer Object representing chat
 */
-@Table(name="chat")
 public class Chat {
-	@Id
 	private long _id;
 	private String _user;
 	private String _text;

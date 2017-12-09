@@ -1,24 +1,20 @@
 package com.underarmour.db;
 
 import com.underarmour.model.Chat;
-import io.dropwizard.hibernate.AbstractDAO;
-import org.hibernate.SessionFactory;
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 
 import java.util.Optional;
 
 /**
  * Chat Data Access Object
  */
-public class ChatDAO extends AbstractDAO {
-	public ChatDAO(SessionFactory sessionFactory) {
-		super(sessionFactory);
-	}
+public interface ChatDAO {
 
-	public Optional<Chat> findById(long id) {
-		return Optional.ofNullable((Chat)get(id));
-	}
+	@SqlUpdate("CREATE TABLE chat (id INTEGER PRIMARY KEY, username VARCHAR, text VARCHAR, timeout INTEGER)")
+	public void createTable();
 
-	public Chat create(Chat chat) {
-		return (Chat)persist(chat);
-	}
+	@SqlUpdate("INSERT INTO chat(id, username, text, timeout) VALUES (:id, :username, :text, :timeout)")
+	void insertNamed(@Bind("id") int id, @Bind("username") String username, @Bind("text") String text, @Bind("timeout") long timeout);
 }
