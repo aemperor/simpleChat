@@ -4,21 +4,18 @@ package com.underarmour.model;
 * Data Transfer Object representing text
 */
 public class Text {
+	private long _id;
 	private String _text;
-	private String _description;
 
 	public Text() {}
 
-	public Text(String text, String description) {
+	public Text(long id, String text) {
+		this._id = id;
 		this._text = text;
-		this._description = description;
 	}
 
 	public String getText() { return this._text; }
-
 	public void setText(String text) { this._text = text; }
-
-	public String getDescription() { return this._description; }
-
-	public void setDescription(String description) { this._description = description; }
+	public long getId() { return this._id; }
+	public void setId(long id) { this._id = id; }
 }

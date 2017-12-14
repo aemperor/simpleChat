@@ -71,16 +71,16 @@ public class ChatResource {
 	}
 
 	/**
-	 * Gets a list of unexpired chat objects by username.
+	 * Gets a list of unexpired text objects by username.
 	 * @param username The username on which to query.
 	 * @return The list of unexpired chat objects.
 	 */
 	@GET
 	@Path("user/{username}")
 	public Response getByUsername(@PathParam("username") String username) {
-		List chats = chatDAO.findAllUnexpiredChatsForUserName(username, new Date().getTime());
+		List texts = chatDAO.findAllUnexpiredChatsForUserName(username, new Date().getTime());
 
-		return Response.ok().entity(chats).build();
+		return Response.ok().entity(texts).build();
 	}
 
 	/**
