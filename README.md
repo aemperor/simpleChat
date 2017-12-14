@@ -10,7 +10,7 @@ How to start the UnderArmour application
 
 Resources
 ---
-- [POST] /chat - Creates a chat object. <br>
+- `[POST] /chat` - Creates a chat object. <br>
  <br><b>Example request: </b><br>
 ```json
 {
@@ -25,7 +25,7 @@ Resources
 	"id": 0001
 }
 ```
-- [GET] /chat/{id} - Retrieves a chat object by id.
+- `[GET] /chat/{id}` - Retrieves a chat object by id.
 <br> <br><b>Example Response</b>
 
 ```json
@@ -39,7 +39,7 @@ Resources
 ]
 
 ```
-- [GET] /chat/user/{username} - Retrieves a list of unexpired chats for the username.
+- `[GET] /chat/user/{username}` - Retrieves a list of unexpired chats for the username.
 <br><br> <b>Example Response</b>
 
 ```json
