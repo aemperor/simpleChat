@@ -28,7 +28,7 @@ import java.util.Random;
 @Produces(MediaType.APPLICATION_JSON)
 public class ChatResource {
 	private Logger LOGGER = LoggerFactory.getLogger(ChatResource.class);
-	private final ChatDAO chatDAO;
+	protected ChatDAO chatDAO;
 
 	public ChatResource(ChatDAO chatDAO) {
 		this.chatDAO = chatDAO;
@@ -64,7 +64,7 @@ public class ChatResource {
 	 */
 	@GET
 	@Path("{id}")
-	public Response get(@PathParam("id") long id) {
+	public Response getById(@PathParam("id") long id) {
 		List chats = chatDAO.findAllChatsForId(id);
 
 		return Response.ok().entity(chats).build();
@@ -76,8 +76,8 @@ public class ChatResource {
 	 * @return The list of unexpired chat objects.
 	 */
 	@GET
-	@Path("username/{username}")
-	public Response get(@PathParam("username") String username) {
+	@Path("user/{username}")
+	public Response getByUsername(@PathParam("username") String username) {
 		List chats = chatDAO.findAllUnexpiredChatsForUserName(username, new Date().getTime());
 
 		return Response.ok().entity(chats).build();

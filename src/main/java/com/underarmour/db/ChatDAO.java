@@ -1,7 +1,6 @@
 package com.underarmour.db;
 
 import com.underarmour.model.Chat;
-import org.postgresql.util.PSQLException;
 import org.skife.jdbi.v2.exceptions.UnableToExecuteStatementException;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
