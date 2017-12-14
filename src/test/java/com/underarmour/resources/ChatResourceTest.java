@@ -2,6 +2,7 @@ package com.underarmour.resources;
 
 import com.underarmour.db.ChatDAO;
 import com.underarmour.model.Chat;
+import com.underarmour.model.Text;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -75,14 +76,14 @@ public class ChatResourceTest {
 	 */
 	@Test
 	public void testGetByUsername() {
-		List<Chat> chats = new ArrayList<>();
-		chats.add(mock(Chat.class));
-		chats.add(mock(Chat.class));
+		List<Text> texts = new ArrayList<>();
+		texts.add(mock(Text.class));
+		texts.add(mock(Text.class));
 
-		when(_chatResource.chatDAO.findAllUnexpiredChatsForUserName(eq("user"), anyLong())).thenReturn(chats);
+		when(_chatResource.chatDAO.findAllUnexpiredChatsForUserName(eq("user"), anyLong())).thenReturn(texts);
 
 		Response response = _chatResource.getByUsername("user");
 		Assert.assertNotNull(response.getEntity());
-		Assert.assertEquals(chats, response.getEntity());
+		Assert.assertEquals(texts, response.getEntity());
 	}
 }
