@@ -1,29 +1,43 @@
 package com.underarmour.model;
 
+import java.util.Date;
+
 /**
 * Data Transfer Object representing chat
 */
 public class Chat {
+	private final int DEFAULT_TIMEOUT = 60000;
+
 	private long _id;
 	private String _user;
 	private String _text;
-	private int _timeout = 60000;
+	private long _expiration;
 
 
-	public Chat() { }
+	public Chat() { this._expiration = calculateExpiration(DEFAULT_TIMEOUT); }
+
+	public Chat(String user, String text) {
+		this._user = user;
+		this._text = text;
+		this._expiration = calculateExpiration(DEFAULT_TIMEOUT);
+	}
 
 	public Chat(String user, String text, int timeout) {
 		this._user = user;
 		this._text = text;
-		this._timeout = timeout;
+		this._expiration = calculateExpiration(timeout);
 	}
 
 	public String getUser() { return this._user; }
 	public void setUser(String user) { this._user = user; }
 	public String getText() { return this._text; }
 	public void setText(String text) { this._text = text; }
-	public int getTimeout() { return this._timeout; }
-	public void setTimeout(int timeout) { this._timeout = timeout; }
+	public long getExpiration() { return this._expiration; }
+	public void setExpiration(long expiration) { this._expiration = expiration; }
 	public long getId() { return this._id; }
 	public void setId(long id) { this._id = id; }
+
+	private long calculateExpiration(int timeout) {
+		return (new Date()).getTime() + timeout;
+	}
 }

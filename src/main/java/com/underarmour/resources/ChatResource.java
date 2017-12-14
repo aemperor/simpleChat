@@ -21,11 +21,11 @@ import java.util.Random;
 /**
 * Resource to house chat apis
 */
-@Path("/chat")
+@Path("chat")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ChatResource {
-	private final Logger LOGGER = LoggerFactory.getLogger(ChatResource.class);
+	private Logger LOGGER = LoggerFactory.getLogger(ChatResource.class);
 	private final ChatDAO chatDAO;
 
 	public ChatResource(ChatDAO chatDAO) {
@@ -47,7 +47,7 @@ public class ChatResource {
 	public Response create(Chat chat) {
 		long id = generateId();
 
-		chatDAO.insertNamed(id, chat.getUser(), chat.getText(), chat.getTimeout());
+		chatDAO.insertNamed(id, chat.getUser(), chat.getText(), chat.getExpiration());
 
 		Map entity = new HashMap();
 		entity.put("id", id);
