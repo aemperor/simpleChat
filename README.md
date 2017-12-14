@@ -2,7 +2,8 @@
 
 How to start the UnderArmour application
 ---
-
+1. Set the DATABASE_URL environment variable to `"postgres://fhvequzhzcsbls:6e9dcc2e81b055bd7b9772eadd4f78be036e0bc17bd8d4efc4a1e2c7ac7e4401@ec2-107-22-211-182.compute-1.amazonaws.com:5432/de0hih3bm64i62"` i.e. <br>
+`export DATABASE_URL="postgres://fhvequzhzcsbls:6e9dcc2e81b055bd7b9772eadd4f78be036e0bc17bd8d4efc4a1e2c7ac7e4401@ec2-107-22-211-182.compute-1.amazonaws.com:5432/de0hih3bm64i62"`
 1. Run `mvn clean install` to download dependencies
 1. Run `mvn package` to create the jar
 1. Start application with `java -jar target/UnderArmour-1.0-SNAPSHOT.jar server config.yml`
