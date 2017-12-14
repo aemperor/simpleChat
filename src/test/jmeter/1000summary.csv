@@ -1,0 +1,4 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+Create Chat Request,1000,2572,60,11367,2492.41,20.000%,84.72422,12.27,20.27,148.3
+Get Chat by Username Request,1000,6957,1232,18796,4334.65,9.700%,46.30487,2274.26,8.86,50293.6
+TOTAL,2000,4764,60,18796,4160.16,14.850%,91.07468,2243.16,19.61,25221.0
