@@ -28,6 +28,13 @@ public class Chat {
 		this._expiration = calculateExpiration(timeout);
 	}
 
+	public Chat(long id, String user, String text, long expiration) {
+		this._id = id;
+		this._user = user;
+		this._text = text;
+		this._expiration = expiration;
+	}
+
 	public String getUser() { return this._user; }
 	public void setUser(String user) { this._user = user; }
 	public String getText() { return this._text; }

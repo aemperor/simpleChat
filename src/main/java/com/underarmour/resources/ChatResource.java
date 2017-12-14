@@ -14,7 +14,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -55,17 +57,31 @@ public class ChatResource {
 		return Response.status(Response.Status.CREATED).entity(entity).build();
 	}
 
+	/**
+	 * Gets a chat object by id.
+	 * @param id The id of the chat object to retrieve.
+	 * @return The chat object.
+	 */
 	@GET
 	@Path("{id}")
-	public String get(@PathParam("id") long id) {
-		return "001";
+	public Response get(@PathParam("id") long id) {
+		List chats = chatDAO.findAllChatsForId(id);
+
+		return Response.ok().entity(chats).build();
 	}
 
-//	@GET
-//	@Path("{username}")
-//	public String get(@PathParam("username") String username) {
-//		return "001";
-//	}
+	/**
+	 * Gets a list of unexpired chat objects by username.
+	 * @param username The username on which to query.
+	 * @return The list of unexpired chat objects.
+	 */
+	@GET
+	@Path("username/{username}")
+	public Response get(@PathParam("username") String username) {
+		List chats = chatDAO.findAllUnexpiredChatsForUserName(username, new Date().getTime());
+
+		return Response.ok().entity(chats).build();
+	}
 
 	/**
 	 * Generates random id within the bounds of 0 to 1,000,000.
