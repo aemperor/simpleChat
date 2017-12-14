@@ -1,5 +1,16 @@
 # UnderArmour
 
+Stack Overview
+---
+* Framework - DropWizard
+* Server - Jetty
+* REST - Jersey/JaxRs
+* Test - JUnit/Mockito
+
+Caveat
+---
+The default timeout time is implemented but specifying a custom timeout is not. All messages will expire 60 seconds after creation.
+
 How to start the UnderArmour application
 ---
 1. Set the DATABASE_URL environment variable to `"postgres://fhvequzhzcsbls:6e9dcc2e81b055bd7b9772eadd4f78be036e0bc17bd8d4efc4a1e2c7ac7e4401@ec2-107-22-211-182.compute-1.amazonaws.com:5432/de0hih3bm64i62"` i.e. <br>
@@ -8,6 +19,10 @@ How to start the UnderArmour application
 1. Run `mvn package` to create the jar
 1. Start application with `java -jar target/UnderArmour-1.0-SNAPSHOT.jar server config.yml`
 1. To check that your application is running enter url `http://localhost:8080`
+
+Tests
+---
+* To run tests, run `mvn test`
 
 Resources
 ---
@@ -46,40 +61,28 @@ Resources
 ```json
 [
     {
-        "id": 205533,
-        "user": "user1",
-        "text": "hello",
-        "expiration": 1513289431694
+        "id": 136219,
+        "text": "hello"
     },
     {
-        "id": 143633,
-        "user": "user1",
-        "text": "hello",
-        "expiration": 1513289433084
+        "id": 255622,
+        "text": "hello"
     },
     {
-        "id": 905733,
-        "user": "user1",
-        "text": "hello",
-        "expiration": 1513289433772
+        "id": 7752,
+        "text": "hello"
     },
     {
-        "id": 398539,
-        "user": "user1",
-        "text": "hello",
-        "expiration": 1513289433979
+        "id": 399944,
+        "text": "hello"
     },
     {
-        "id": 790527,
-        "user": "user1",
-        "text": "hello",
-        "expiration": 1513289434170
+        "id": 305906,
+        "text": "hello"
     },
     {
-        "id": 642454,
-        "user": "user1",
-        "text": "hello",
-        "expiration": 1513289434587
+        "id": 410662,
+        "text": "hello"
     }
 ]
 ```
