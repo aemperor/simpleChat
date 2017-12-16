@@ -2,6 +2,7 @@ package com.underarmour.resources;
 
 import com.underarmour.db.ChatDAO;
 import com.underarmour.model.Chat;
+import com.underarmour.model.ChatETO;
 import com.underarmour.model.Text;
 import org.junit.Assert;
 import org.junit.Before;
@@ -60,9 +61,9 @@ public class ChatResourceTest {
 	 */
 	@Test
 	public void testGetById() {
-		List<Chat> chats = new ArrayList<>();
-		chats.add(mock(Chat.class));
-		chats.add(mock(Chat.class));
+		List<ChatETO> chats = new ArrayList<>();
+		chats.add(mock(ChatETO.class));
+		chats.add(mock(ChatETO.class));
 
 		when(_chatResource.chatDAO.findAllChatsForId(eq(1l))).thenReturn(chats);
 

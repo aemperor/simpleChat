@@ -1,7 +1,5 @@
 package com.underarmour.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Date;
 
 /**
@@ -10,6 +8,7 @@ import java.util.Date;
 public class Chat {
 	private final int DEFAULT_TIMEOUT = 60000;
 
+	private Date _creation = new Date();
 	private long _id;
 	private String _user;
 	private String _text;
@@ -57,10 +56,10 @@ public class Chat {
 	private long calculateExpiration(int timeout) {
 		long expiration;
 		if (timeout > 0) {
-			expiration = (new Date()).getTime() + timeout;
+			expiration = this._creation.getTime() + timeout;
 		}
 		else {
-			expiration = (new Date()).getTime() + DEFAULT_TIMEOUT;
+			expiration = this._creation.getTime() + DEFAULT_TIMEOUT;
 		}
 
 		return expiration;
