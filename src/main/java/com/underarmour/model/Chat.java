@@ -12,14 +12,15 @@ public class Chat {
 	private String _user;
 	private String _text;
 	private long _expiration;
+	private int _timeout = DEFAULT_TIMEOUT;
 
 
-	public Chat() { this._expiration = calculateExpiration(DEFAULT_TIMEOUT); }
+	public Chat() { this._expiration = calculateExpiration(this._timeout); }
 
 	public Chat(String user, String text) {
 		this._user = user;
 		this._text = text;
-		this._expiration = calculateExpiration(DEFAULT_TIMEOUT);
+		this._expiration = calculateExpiration(this._timeout);
 	}
 
 	public Chat(String user, String text, int timeout) {

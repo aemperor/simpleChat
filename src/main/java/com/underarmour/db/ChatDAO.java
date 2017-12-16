@@ -1,6 +1,7 @@
 package com.underarmour.db;
 
 import com.underarmour.model.Chat;
+import com.underarmour.model.ChatETO;
 import com.underarmour.model.Text;
 import org.skife.jdbi.v2.exceptions.UnableToExecuteStatementException;
 import org.skife.jdbi.v2.sqlobject.Bind;
@@ -23,7 +24,7 @@ public interface ChatDAO {
 
 	@RegisterMapper(ChatMapper.class)
 	@SqlQuery("SELECT * FROM chat where id = :id")
-	public List<Chat> findAllChatsForId(@Bind("id") long id);
+	public List<ChatETO> findAllChatsForId(@Bind("id") long id);
 
 	@RegisterMapper(TextMapper.class)
 	@SqlQuery("SELECT * FROM chat where username= :username AND expiration >= :timeNow")

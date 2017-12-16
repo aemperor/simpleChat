@@ -2,6 +2,7 @@ package com.underarmour.resources;
 
 import com.underarmour.db.ChatDAO;
 import com.underarmour.model.Chat;
+import com.underarmour.model.ChatETO;
 import org.skife.jdbi.v2.exceptions.UnableToExecuteStatementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,12 +61,12 @@ public class ChatResource {
 	/**
 	 * Gets a chat object by id.
 	 * @param id The id of the chat object to retrieve.
-	 * @return The chat object.
+	 * @return The chat eto object.
 	 */
 	@GET
 	@Path("{id}")
 	public Response getById(@PathParam("id") long id) {
-		List chats = chatDAO.findAllChatsForId(id);
+		List<ChatETO> chats = chatDAO.findAllChatsForId(id);
 
 		return Response.ok().entity(chats).build();
 	}
