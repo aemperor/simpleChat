@@ -7,10 +7,6 @@ Stack Overview
 * REST - Jersey/JaxRs
 * Test - JUnit/Mockito
 
-Caveat
----
-The default timeout time is implemented but specifying a custom timeout is not. All messages will expire 60 seconds after creation.
-
 How to start the UnderArmour application
 ---
 1. Set the DATABASE_URL environment variable to `"postgres://fhvequzhzcsbls:6e9dcc2e81b055bd7b9772eadd4f78be036e0bc17bd8d4efc4a1e2c7ac7e4401@ec2-107-22-211-182.compute-1.amazonaws.com:5432/de0hih3bm64i62"` i.e. <br>
@@ -46,12 +42,12 @@ Resources
 
 ```json
 [
-	{
-		"id": 36256,
-		"text": "hello",
-		"user": "user1",
-		"expiration": 1513233720268
-	}
+    {
+        "id": 433961,
+        "text": "hello",
+        "username": "user1",
+        "expirationDate": "2017-12-16 22:07:29 PM UTC"
+    }
 ]
 
 ```
