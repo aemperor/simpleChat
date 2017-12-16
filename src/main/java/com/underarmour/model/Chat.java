@@ -1,5 +1,7 @@
 package com.underarmour.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 /**
@@ -12,10 +14,10 @@ public class Chat {
 	private String _user;
 	private String _text;
 	private long _expiration;
-	private int _timeout = DEFAULT_TIMEOUT;
+	private int _timeout;
 
 
-	public Chat() { this._expiration = calculateExpiration(this._timeout); }
+	public Chat() { }
 
 	public Chat(String user, String text) {
 		this._user = user;
@@ -40,12 +42,27 @@ public class Chat {
 	public void setUser(String user) { this._user = user; }
 	public String getText() { return this._text; }
 	public void setText(String text) { this._text = text; }
-	public long getExpiration() { return this._expiration; }
+	public long getExpiration() {
+		if (this._expiration == 0) {
+			this._expiration = calculateExpiration(this._timeout);
+		}
+		return this._expiration;
+	}
 	public void setExpiration(long expiration) { this._expiration = expiration; }
+	public void setTimeout(int timeout) { this._timeout = timeout; }
+	public int getTimeout() { return this._timeout; }
 	public long getId() { return this._id; }
 	public void setId(long id) { this._id = id; }
 
 	private long calculateExpiration(int timeout) {
-		return (new Date()).getTime() + timeout;
+		long expiration;
+		if (timeout > 0) {
+			expiration = (new Date()).getTime() + timeout;
+		}
+		else {
+			expiration = (new Date()).getTime() + DEFAULT_TIMEOUT;
+		}
+
+		return expiration;
 	}
 }
