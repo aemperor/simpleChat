@@ -1,4 +1,4 @@
-# UnderArmour
+# SimpleChat
 
 Stack Overview
 ---
